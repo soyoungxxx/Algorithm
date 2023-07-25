@@ -7,21 +7,6 @@ void swap(int a, int b) {
   b = tmp;
 }
 
-void quickSort(int* arr, int left, int right) {
-  if (right - left <= 1) return;
-  int pivotIndex = (right + left) / 2;
-  int pivot = arr[pivotIndex];
-  swap(arr[right-1], arr[pivotIndex]);
-  int i = left;
-  for (int j = left; j < right - 1; j++) {
-    if (arr[j] < pivot) swap(arr[i++], arr[j]);
-  }
-  swap(arr[right-1], arr[i]);
-
-  quickSort(arr, left, i);
-  quickSort(arr, i+1, right);
-}
-
 int BS(int * arr, int num, int left, int right) {
   if (right - left < 1) return 0;
 
@@ -45,8 +30,7 @@ int main() {
   for(int i = 0; i < N; i++) {
     scanf("%d", &num[i]);
   }
-//  quickSort(num, 0, N);
-qsort(num, N, sizeof(int), compare);
+  qsort(num, N, sizeof(int), compare);
 
   scanf("%d", &M);
   int *res = (int*)malloc(sizeof(int)*M);
