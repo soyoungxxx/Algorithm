@@ -1,32 +1,15 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
-    public int[] solution(int l, int r) {
-        int[] answer;
-        ArrayList<Integer> list = new ArrayList<>();
-        
+    public List<Integer> solution(int l, int r) {
+        List<Integer> answer = new ArrayList<>();
         for (int i = l; i <= r; i++) {
-            int flag = 1;
-            int num = i;
-            while (num > 0) {
-                if (num % 10 == 5 || num % 10 == 0) {
-                    num /= 10;
-                }
-                else {
-                    flag = 0;
-                    break;
-                }
-            }
-            if (flag == 1) {
-                list.add(i);
-            }
+            String str = Integer.toString(i);
+            str = str.replace("5", ""); // 5 제거
+            str = str.replace("0", ""); // 0 제거
+            if (str.length() == 0) answer.add(i);
         }
-        if (list.size() == 0) list.add(-1);
-        answer = new int[list.size()];
-        
-        for (int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
-        }
+        if (answer.size() == 0) answer.add(-1);
         return answer;
     }
 }
