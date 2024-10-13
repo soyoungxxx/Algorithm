@@ -25,7 +25,7 @@ public class Main {
         int answer = 1;
         for (int i = 1; i < N; i++) {
             int compareStart = times[i][0], compareEnd = times[i][1];
-            if (compareStart < end && compareEnd < end) {
+            if (compareEnd < end) {
                 start = compareStart;
                 end = compareEnd;
                 continue;
